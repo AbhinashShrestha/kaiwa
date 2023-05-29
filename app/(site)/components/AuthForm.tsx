@@ -7,6 +7,7 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import AuthSocialButton from "./AuthSocialButton";
 import {FcGoogle} from "react-icons/fc"
 import { IconBaseProps } from "react-icons";
+import axios from "axios";
 
 type Variant = 'LOGIN' | 'REGISTER'
 
@@ -34,15 +35,15 @@ const AuthForm = () => {
             email:'',
             password:''
         }
-    })
+    }) //gives data variable
 
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         setIsLoading(true) //cuz we are submitting 
         if(variant === 'REGISTER'){
-            //axios.register
+            axios.post('/api/register',data)
         }
         if(variant === 'LOGIN'){
-            //nextauth signin
+            
         }
     }
 
