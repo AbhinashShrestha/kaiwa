@@ -8,6 +8,7 @@ import AuthSocialButton from "./AuthSocialButton";
 import {FcGoogle} from "react-icons/fc"
 import { IconBaseProps } from "react-icons";
 import axios from "axios";
+import { toast } from "react-hot-toast";
 
 type Variant = 'LOGIN' | 'REGISTER'
 
@@ -41,9 +42,10 @@ const AuthForm = () => {
         setIsLoading(true) //cuz we are submitting 
         if(variant === 'REGISTER'){
             axios.post('/api/register',data)
+            .catch(()=> toast.error("Something went wrong during Registration."))
         }
         if(variant === 'LOGIN'){
-            
+
         }
     }
 
