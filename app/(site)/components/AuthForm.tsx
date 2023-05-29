@@ -9,6 +9,7 @@ import {FcGoogle} from "react-icons/fc"
 import { IconBaseProps } from "react-icons";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import {signIn} from "next-auth/react"
 
 type Variant = 'LOGIN' | 'REGISTER'
 
@@ -43,15 +44,37 @@ const AuthForm = () => {
         if(variant === 'REGISTER'){
             axios.post('/api/register',data)
             .catch(()=> toast.error("Something went wrong during Registration."))
+            .finally(()=>setIsLoading(false))
         }
         if(variant === 'LOGIN'){
-
+            signIn('credentials',{
+                ...data,
+                redirect:false
+            })
+            .then((callback)=>{
+                if(callback?.error){
+                    toast.error("Invalid Credentials!")
+                }
+                if(callback?.ok && !callback?.error){
+                    toast.success('Logged In Success!')
+                }
+            })
+            .finally(()=>setIsLoading(false)) //this will unblock the input 
         }
     }
 
     const socialAction = (action: string)=> {
         setIsLoading(true);
-        //social sign in
+        signIn(action, {redirect:false})
+        .then((callback)=>{
+            if(callback?.error){
+                toast.error("Invalid Credentials!")
+            }
+            if(callback?.ok && !callback?.error){
+                toast.success('Logged In Success!')
+            }
+        })
+        .finally(()=>setIsLoading(false)) 
     }
     return (
         <div
