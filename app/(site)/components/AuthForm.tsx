@@ -6,7 +6,6 @@ import { useCallback, useEffect, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import AuthSocialButton from "./AuthSocialButton";
 import {FcGoogle} from "react-icons/fc"
-import { IconBaseProps } from "react-icons";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import {signIn, useSession} from "next-auth/react"
