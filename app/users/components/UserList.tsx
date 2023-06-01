@@ -36,10 +36,11 @@ const UserList:React.FC<UserListProps> = ({
                     text-neutral-800
                     py-4
                 ">
-                    Kaiwa
+                    Nakama
                 </div>
             </div> 
             {items.map((item)=>(
+                //@ts-ignore
                 <UserBox 
                     key={item.id}
                     data={item}

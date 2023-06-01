@@ -13,9 +13,9 @@ export default async function getUsers() {
                 createdAt: 'desc',
             },
             where:{
-                // NOT:{
-                //     email:session.user.email
-                // }
+                NOT:{
+                    email:session.user.email
+                }
             }
         })
         return users;
