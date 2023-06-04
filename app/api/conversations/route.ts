@@ -57,11 +57,11 @@ export async function POST(
                             equals: [currentUser.id,userId]
                         }
                     },
-                    // {
-                    //     userIds: { //this will prevent from two conversation with the same person being created
-                    //         equals: [userId,currentUser.id]
-                    //     }
-                    // }
+                    {
+                        userIds: { //this will prevent from two conversation with the same person being created
+                            equals: [userId,currentUser.id]
+                        }
+                    }
                 ]
             }
         });
