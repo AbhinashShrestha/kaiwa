@@ -1,16 +1,15 @@
-'use client';
-
 import { IconType } from "react-icons";
 
 interface AuthSocialButtonProps {
     icon: IconType,
     onClick:()=>void,
-
+    label: string
 }
 
 const AuthSocialButton:React.FC<AuthSocialButtonProps> = ({
     icon:Icon,
-    onClick
+    onClick,
+    label
 }) => {
   return (
    <button
@@ -18,8 +17,9 @@ const AuthSocialButton:React.FC<AuthSocialButtonProps> = ({
     onClick={onClick}
     className="
         inline-flex
+        items-center
         w-full
-        justify-center
+        justify-between
         rounded-md
         bg-white
         px-4
@@ -33,7 +33,8 @@ const AuthSocialButton:React.FC<AuthSocialButtonProps> = ({
         focus:outline-offset-0
     "
    >
-    <Icon />
+    <Icon size={30}/>
+    <span className="text-center font-semibold text-black w-full">{label}</span>
    </button>
   )
 }
