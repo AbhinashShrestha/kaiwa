@@ -167,6 +167,7 @@ const AuthForm = () => {
                         <div className="mt-6 flex gap-2">
                             <AuthSocialButton 
                             icon={FcGoogle} 
+                            label="Continue with Google"
                             onClick={()=>socialAction('google')}
                             />
                         </div>
