@@ -40,12 +40,11 @@ const ProfileDrawer:React.FC<ProfileDrawerProps> = ({
         return 'Active';
     },[data]) 
     return (
-        <>
+        <>  
             <ConfirmModal
                 isOpen={confirmOpen}
                 onClose={()=>setConfirmOpen(false)}
-                >
-            </ConfirmModal>
+            />
             <Transition.Root show={isOpen} as={Fragment} >
                 <Dialog as="div" className="relative z-50" onClose={onClose} >
                     <Transition.Child
