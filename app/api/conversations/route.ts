@@ -1,6 +1,7 @@
 import prisma from "@/app/libs/prismadb"
 import getCurrentUser from "@/app/actions/getCurrentUser"
 import { NextResponse } from "next/server"
+import { pusherServer } from "@/app/libs/pusher";
 
 export async function POST(
     request:Request
@@ -44,6 +45,15 @@ export async function POST(
                     users: true
                 }
             });
+
+            //pusher logic 
+
+            newConversation.users.forEach((user)=>{
+                if(user.email){
+                    pusherServer.trigger(user.email,'conversation:new',newConversation)
+                }
+            })
+
             return NextResponse.json(newConversation)
         }
         //one on one chat logic 
@@ -85,7 +95,16 @@ export async function POST(
             include : {
                 users: true //doing this gives us access to all the properties of the user
             }
-        }) ;
+        })
+
+        //pusher logic
+
+        newConversation.users.map ((user)=>{
+            if(user.email){
+                pusherServer.trigger(user.email,'conversation:new',newConversation) //will be used in client to subscribe
+            }
+        }) 
+
         return NextResponse.json(newConversation);
 
 
