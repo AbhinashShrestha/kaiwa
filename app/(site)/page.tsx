@@ -7,7 +7,7 @@ export default function Home() {
 
     return (
         <div className='bg-teal-200' >
-            <div className="bg-cover bg-center min-h-screen flex items-center justify-center" style={{ backgroundImage: `url(./a.png)` }}>
+            <div className="bg-cover bg-center min-h-screen flex items-center justify-center" style={{ backgroundImage: `url(./images/a.png)` }}>
             {showLandingPage ? (
                 <LandingPage />
             ) : (
@@ -19,7 +19,7 @@ export default function Home() {
                         It has no encryption so use with caution!
                     </div>
                     <button 
-                    className='text-xl text-white bg-teal-500 hover:bg-teal-300 rounded-lg px-4 py-2 mt-4'
+                    className='text-xl text-black bg-teal-500 hover:bg-teal-300 rounded-lg px-4 py-2 mt-4'
                     onClick={() => setShowLandingPage(true)}>Start messaging!</button>
                 </div>
             )}
