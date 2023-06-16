@@ -1,37 +1,31 @@
-import Image from "next/image";
-import AuthForm from "./components/AuthForm";
+'use client';
+import { useState } from 'react';
+import LandingPage from './LandingPage';
 
 export default function Home() {
+    const [showLandingPage, setShowLandingPage] = useState(false);
+
     return (
-        <div className="
-            flex 
-            min-h-full
-            flex-col
-            justify-center
-            py-12
-            sm:px-6
-            lg:px-8
-            bg-teal-50
-        ">
-            <div className="sm:mx-auto sm:w-full sm:max-w-md">
-                <Image 
-                    alt="Messaging app logo"
-                    height="80"
-                    width="80"
-                    className="mx-auto w-auto"
-                    src="/images/logo.png"
-                />
-                <h2 className="mt-6
-                    text-center
-                    text-3xl
-                    font-bold
-                    tracking-tight
-                    text-gray-900">
-                    Sign in to your Account
-                </h2>
-            </div>
-            <AuthForm />
+        <div className='bg-teal-200' >
+            <div className="bg-cover bg-center min-h-screen flex items-center justify-center" style={{ backgroundImage: `url(./a.png)` }}>
+            {showLandingPage ? (
+                <LandingPage />
+            ) : (
+                <div className="text-center">
+                    <div
+                    className='text-2xl font-bold text-black mb-4'
+                    >A realtime chat app</div>
+                    <div className="text-sm">
+                        It has no encryption so use with caution!
+                    </div>
+                    <button 
+                    className='text-xl text-white bg-teal-500 hover:bg-teal-300 rounded-lg px-4 py-2 mt-4'
+                    onClick={() => setShowLandingPage(true)}>Start messaging!</button>
+                </div>
+            )}
         </div>
-    )
-  }
-  
+        </div>
+        
+    );
+}
+
