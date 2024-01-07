@@ -27,8 +27,17 @@ Follow these steps to install and run the chat application:
 
 To start the application, follow these steps:
 
-1. Run the start script: `npm run dev`
-2. Open a web browser and navigate to `http://localhost:3000`
+1. You should have your own .env file with
+DATABASE_URL
+GOOGLE_CLIENT_ID=
+GOOGLE_CLIENT_SECRET=
+NEXTAUTH_SECRET=
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=
+NEXT_PUBLIC_PUSHER_APP_KEY=
+PUSHER_APP_ID=
+PUSHER_SECRET=
+2. Run the start script: `npm run dev`
+3. Open a web browser and navigate to `http://localhost:3000`
 
 ## Contributing
 
